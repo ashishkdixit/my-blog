@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, abort
+import os
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -13,14 +14,14 @@ from flask_gravatar import Gravatar
 from functools import wraps
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6dontzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ['API_KEY']
 ckeditor = CKEditor(app)
 Bootstrap(app)
 gravatar = Gravatar(app, size=100, rating='x', default='retro', force_default=False, force_lower=False, use_ssl=False,
                     base_url=None)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQL_DB']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
