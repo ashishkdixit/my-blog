@@ -15,9 +15,9 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 
-from jinja2.utils import markupsafe
-markupsafe.Markup()
-Markup('')
+# from jinja2.utils import markupsafe
+# markupsafe.Markup()
+# Markup('')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ['API_KEY']
