@@ -3,6 +3,8 @@ import os
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
+
+from markupsafe import Markup
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
@@ -12,6 +14,10 @@ from flask_login import UserMixin, login_user, LoginManager, current_user, logou
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
+
+from jinja2.utils import markupsafe
+markupsafe.Markup()
+Markup('')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ['API_KEY']
